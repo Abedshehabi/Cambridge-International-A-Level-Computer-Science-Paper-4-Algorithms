@@ -53,6 +53,10 @@ def bubble_sort(numbers):
 #Worst case time complexity: O(N**2), worst case space complexity: O(1)
 
 def insertion_sort(numbers):
-    pass
+    for i in range(1,len(numbers)):
+        j=i
+        while (j>0) and (numbers[j-1] > numbers[j]):
+            numbers[j-1], numbers[j] = numbers[j], numbers[j-1]
+            j -= 1
 
 #Worst case time complexity: O(N**2), worst case space complexity: O(1)
