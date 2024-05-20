@@ -8,30 +8,23 @@ def linear_search(numbers, searchVal):
 
 #Worst case time complexity: O(N), Worst case space complexity: O(1)
 
-def binary_search(numbers, searchVal):
+def binary_search(numbers, searchVal): #returns the index or the searchVal 
     low = 0
     high = len(numbers)-1
-    if len(numbers) % 2 == 0:
-        pivot = int(len(numbers)/2)
+    if numbers[0] == searchVal:
+            return 0
+    elif numbers[len(numbers)-1] == searchVal:
+        return len(numbers)-1
     else:
-        pivot = int(len(numbers)//2 + 1)
-    if searchVal > numbers[pivot]:
-        low = pivot
-        if len(numbers[low:high]) % 2 == 0:
-            pivot = int(len(numbers[low:high])/2)
-        else:
-            pivot = int(len(numbers[low:high])//2 + 1)
-    elif searchVal == numbers[pivot]:
-        return True
-    elif searchVal < numbers[pivot]:
-        high = pivot
-        if len(numbers[low:high]) % 2 == 0:
-            pivot = int(len(numbers[low:high])/2)
-        else:
-            pivot = int(len(numbers)//2 + 1)
-    elif low == high:
+        while(low <= high):
+            mid = int((low+high)/2)
+            if numbers[mid]==searchVal:
+                return mid
+            elif numbers[mid] > searchVal:
+                high = mid -1
+            elif numbers[mid] < searchVal:
+                low = mid +1
         return False
-    
 
 #Binary search only works if the list is sorted.
 #Worst case time complexity: O(log N) and worst case space complexity: O(1)
